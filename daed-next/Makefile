@@ -5,14 +5,14 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=daed-next
-PKG_VERSION:=2023-10-25-952b1c9
+PKG_VERSION:=2023-12-02-102cb56
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/daeuniverse/daed-revived-next.git
-PKG_SOURCE_VERSION:=952b1c9878739349bde5149468a230f66e633256
-PKG_MIRROR_HASH:=ad4af26cc11269133a6330a374c780a0aaa8d89968de19782a4f899bb9a66d55
+PKG_SOURCE_VERSION:=102cb562b6962b44c47f38092284d2ab2506a702
+PKG_MIRROR_HASH:=2c7d623c5609d70716fdb42bdeb2b231467144b6871255352740adf16cb6fef4
 
 PKG_BUILD_DIR=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)/wing
 PKG_BUILD_DEPENDS:=golang/host bpf-headers
@@ -61,7 +61,7 @@ define Download/daed-next
   URL:=https://github.com/sbwml/luci-app-daed-next/releases/download/daed-web-$(PKG_VERSION)/
   URL_FILE:=daed-web-$(PKG_VERSION).squashfs
   FILE:=daed-web-$(PKG_VERSION).squashfs
-  HASH:=9d7fd44c995f8d461e26915f2521534bcdd62b5d16cadcdd0d4b90e7de2aaf34
+  HASH:=b51cadfb4e2a281fadbd0837ecc96bc58b693221c695de48e714ddc432c6352f
 endef
 
 define Build/Prepare
