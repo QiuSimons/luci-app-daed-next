@@ -38,24 +38,10 @@ o.default = Password
 o.password = true
 o:depends('subscribe_auto_update', '1')
 
-o = s:option(ListValue, "subscribe_update_week_time", translate("Update Cycle"))
-o:value("*", translate("Every Day"))
-o:value("1", translate("Every Monday"))
-o:value("2", translate("Every Tuesday"))
-o:value("3", translate("Every Wednesday"))
-o:value("4", translate("Every Thursday"))
-o:value("5", translate("Every Friday"))
-o:value("6", translate("Every Saturday"))
-o:value("7", translate("Every Sunday"))
-o.default = "*"
+o = s:option(Value, "subscribe_update_time", translate("Update Cycle(By hours)"))
+o.datatype = "and(min(1),max(360))"
+o.default = 24
 o:depends('subscribe_auto_update', '1')
-
-update_time = s:option(ListValue, "subscribe_update_day_time", translate("Update Time (Every Day)"))
-for t = 0, 23 do
-  update_time:value(t, t..":00")
-end
-update_time.default = 0
-update_time:depends('subscribe_auto_update', '1')
 
 o = s:option(Value, "listen_port", translate("Web Listen port"))
 o.datatype = "and(port,min(1))"

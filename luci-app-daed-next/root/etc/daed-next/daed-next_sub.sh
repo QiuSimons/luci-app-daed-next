@@ -7,6 +7,10 @@ GRAPHQL_URL="http://127.0.0.1:"$PORT"/graphql"
 CRON_FILE="/etc/crontabs/root"
 RANDOM_SEED=$RANDOM
 RANDOM_NUM=$((RANDOM_SEED % 10 + 1))
+UPDATE_TIME=$(uci -q get daed-next.config.subscribe_update_time)
+WEEKS=$((UPDATE_TIME / 168))
+DAYS=$(($((UPDATE_TIME % 168)) / 24))
+HOURS=$(($((UPDATE_TIME % 168)) % 24))
 
 login() {
 	LOGIN=$(curl -s -X POST -H "Content-Type: application/json" -d '{"query":"query Token($username: String!, $password: String!) {\n token(username: $username, password: $password)\n}","variables":{"username":"'"$USERNAME"'","password":"'"$PASSWORD"'"}}' $GRAPHQL_URL)
@@ -29,7 +33,7 @@ reload() {
 resetcron() {
   touch $CRON_FILE
   sed -i '/daed-next_sub.sh/d' $CRON_FILE 2>/dev/null
-  [ "$(uci -q get daed-next.config.subscribe_auto_update)" -eq 1 ] && echo "${RANDOM_NUM} $(uci -q get daed-next.config.subscribe_update_day_time) * * $(uci -q get daed-next.config.subscribe_update_week_time) /etc/daed-next/daed-next_sub.sh >/dev/null 2>&1" >>$CRON_FILE
+  [ "$(uci -q get daed-next.config.subscribe_auto_update)" -eq 1 ] && echo "${RANDOM_NUM} */${HOURS} */${DAYS} * */${WEEKS} /etc/daed-next/daed-next_sub.sh >/dev/null 2>&1" >>$CRON_FILE
   crontab $CRON_FILE
 }
 
