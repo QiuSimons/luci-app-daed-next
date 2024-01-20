@@ -38,8 +38,8 @@ o.default = Password
 o.password = true
 o:depends('subscribe_auto_update', '1')
 
-o = s:option(Value, "subscribe_update_time", translate("Update Cycle(By hours)"))
-o.datatype = "and(min(1),max(360))"
+o = s:option(Value, "subscribe_update_time", translate("Update Cycle(By Hours)"))
+o.datatype = "and(uinteger,range(1,360))"
 o.default = 24
 o:depends('subscribe_auto_update', '1')
 

@@ -64,7 +64,7 @@ msgstr "请先启动 DAE-WING 和 仪表板 服务后重试"
 msgid "Enable Auto Subscribe Update"
 msgstr "启用订阅自动更新"
 
-msgid "Update Cycle(By hours)"
+msgid "Update Cycle(By Hours)"
 msgstr "更新周期(按小时)"
 
 msgid "Username"
