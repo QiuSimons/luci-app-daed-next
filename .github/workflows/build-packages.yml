@@ -39,7 +39,7 @@ jobs:
           echo "version=$formatted_timestamp-$latest_commit" >> "$GITHUB_ENV"
 
       - name: Building packages
-        uses: sbwml/openwrt-gh-action-sdk@go1.21
+        uses: sbwml/openwrt-gh-action-sdk@go1.22
         env:
           ARCH: ${{ matrix.arch }}-${{ matrix.sdk }}
           FEEDNAME: packages_ci
